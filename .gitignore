@@ -1,0 +1,24 @@
+#file extensions
+*.class
+*.ear
+*.iml
+*.jar
+*.log
+*.nar
+*.rar
+*.tar.gz
+*.war
+*.zip
+
+#directories
+/build/*
+/.gradle/*
+/gradle/*
+/out/*
+
+#files
+gradlew
+gradlew.bat
+.idea/workspace.xml
+
+
