@@ -25,3 +25,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+pmd {
+    ruleSets = [
+            'java-basic',
+            'java-braces',
+            'java-codesize',
+            'java-design',
+            'java-empty',
+            'java-imports',
+            'java-junit',
+            'java-strings',
+            'java-unnecessary',
+            'java-unusedcode'
+    ]
+}
