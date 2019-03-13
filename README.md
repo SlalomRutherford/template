@@ -35,3 +35,4 @@
 - Should we add useful runConfigurations to the repo code?  Or keep it out?
 -- Side Q:  What configs should we have if we do add them?
 - How to deal with plugin versioning?
+- No Splunk plug for gradle.  What do?
