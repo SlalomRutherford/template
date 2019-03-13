@@ -4,6 +4,7 @@
 *.iml
 *.jar
 *.log
+*.name
 *.nar
 *.rar
 *.tar.gz
@@ -15,10 +16,16 @@
 /.gradle/*
 /gradle/*
 /out/*
+/.idea/*
 
 #files
 gradlew
 gradlew.bat
-.idea/workspace.xml
 
+#file exceptions
+!.idea/runConfigurations/*
+!.idea/compiler.xml
+!.idea/encodings.xml
+!.idea/gradle.xml
+!.idea/misc.xml
 

@@ -10,10 +10,4 @@ public class BootTest {
     public void testCorrect() {
         assertEquals(boot.testFunc(), "correct");
     }
-
-    @Test
-    public void testWRONG() {
-        assertEquals(boot.testFunc(), "NOT correct");
-    }
-
 }
