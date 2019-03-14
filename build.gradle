@@ -36,6 +36,10 @@ dependencies {
     //TODO: Container?  Add.  Does artifact work?
     //TODO: Splunk.  Let raf do it.
     //TODO: add TODOs
+    //get docker plugin which can describe how to build docker thru gradle.
+    //question JAR vs Docker.  You can add both 2 artifactory.  Or just use AWS ECR.
+    
+    
 }
 
 pmd {

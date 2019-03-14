@@ -14,14 +14,10 @@
 #directories
 /build/*
 /.gradle/*
-/gradle/*
 /out/*
 /.idea/*
 
 #files
-gradlew
-gradlew.bat
-
 #file exceptions
 !.idea/runConfigurations
 !.idea/compiler.xml
