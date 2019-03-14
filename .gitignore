@@ -18,4 +18,5 @@
 /.idea/*
 
 #files
+!/gradle/wrapper/*.jar
 #file exceptions
