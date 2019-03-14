@@ -23,7 +23,7 @@ gradlew
 gradlew.bat
 
 #file exceptions
-!.idea/runConfigurations/*
+!.idea/runConfigurations
 !.idea/compiler.xml
 !.idea/encodings.xml
 !.idea/gradle.xml
