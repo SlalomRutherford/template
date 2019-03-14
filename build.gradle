@@ -19,27 +19,41 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+    imports {
+        mavenBom 'software.amazon.awssdk:bom:2.0.0'
+    }
+}
+
 dependencies {
     //java
     testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    //aws
+    compile 'software.amazon.awssdk:api-gateway'
+    compile 'software.amazon.awssdk:autoscaling'
+    compile 'software.amazon.awssdk:cloudformation'
+    compile 'software.amazon.awssdk:cloudwatch'
+    compile 'software.amazon.awssdk:dynamodb'
+    compile 'software.amazon.awssdk:ecs'
+    compile 'software.amazon.awssdk:elasticache'
+    compile 'software.amazon.awssdk:kinesis'
+    compile 'software.amazon.awssdk:lambda'
+    compile 'software.amazon.awssdk:s3'
 
     //rest
     testCompile 'io.rest-assured:rest-assured:3.3.0'
     testCompile  'io.rest-assured:json-path:3.3.0'
 
     //org.springframework.boot
-    implementation 'org.springframework.boot:spring-boot-starter' //only applies to main/java ?? TODO:  Figure out how dependencies work.
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'  //only applies to test/java folder
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     //TODO: CICD JANK
-    //TODO: REsearch aws plugs
     //TODO: Container?  Add.  Does artifact work?
     //TODO: Splunk.  Let raf do it.
-    //TODO: add TODOs
-    //get docker plugin which can describe how to build docker thru gradle.
-    //question JAR vs Docker.  You can add both 2 artifactory.  Or just use AWS ECR.
-    
-    
+    //TODO: get docker plugin which can describe how to build docker thru gradle.
+    //TODO: question JAR vs Docker.  You can add both 2 artifactory.  Or just use AWS ECR.
 }
 
 pmd {
