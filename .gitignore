@@ -19,9 +19,3 @@
 
 #files
 #file exceptions
-!.idea/runConfigurations
-!.idea/compiler.xml
-!.idea/encodings.xml
-!.idea/gradle.xml
-!.idea/misc.xml
-
