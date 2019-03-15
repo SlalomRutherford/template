@@ -19,3 +19,6 @@
 
 #directory exceptions
 !/gradle/*
+!/.idea/runConfigurations
+
+
