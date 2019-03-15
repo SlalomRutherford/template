@@ -51,16 +51,21 @@ Don't worry about it.  No touch.
 # Plugin Docs
 ### Core:
 Java (Junit): https://docs.gradle.org/current/userguide/java_plugin.html
+
 Pmd: https://docs.gradle.org/current/userguide/pmd_plugin.html
+
 Idea: https://docs.gradle.org/current/userguide/idea_plugin.html
 
 ### Non Core:
 Spring Boot: https://spring.io/guides
+
 Artifactory :https://github.com/JFrog/project-examples/tree/master/gradle-examples
 
 ### Non Gradle
 AWS: https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/welcome.html
+
 Splunk: https://docs.splunk.com/Documentation
+
 REST Assured: https://github.com/rest-assured/rest-assured/wiki
 
 
