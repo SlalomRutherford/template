@@ -21,15 +21,9 @@ repositories {
     }
 }
 
-dependencyManagement {
-    imports {
-        mavenBom 'software.amazon.awssdk:bom:2.5.0'
-    }
-}
-
 dependencies {
     //java
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation 'junit:junit:4.12'
 
     //aws
     implementation 'software.amazon.awssdk:apigateway'
@@ -44,7 +38,7 @@ dependencies {
     implementation 'software.amazon.awssdk:s3'
 
     //splunk
-    implementation group: 'com.splunk', name: 'splunk', version: '1.6.5.0'
+    implementation 'com.splunk:splunk:1.6.5.0'
 
     //rest
     testImplementation 'io.rest-assured:rest-assured:3.3.0'
@@ -53,9 +47,12 @@ dependencies {
     //org.springframework.boot
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
 
-    //TODO: CICD JANK
-    //TODO: Docker plugin?
+dependencyManagement {
+    imports {
+        mavenBom 'software.amazon.awssdk:bom:2.5.0'
+    }
 }
 
 pmd {

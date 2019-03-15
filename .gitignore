@@ -17,6 +17,5 @@
 /out/*
 /.idea/*
 
-#files
-!/gradle/wrapper/*.jar
-#file exceptions
+#directory exceptions
+!/gradle/*
