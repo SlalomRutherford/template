@@ -16,7 +16,7 @@ When creating a new service or repo, use this template as a jumping off point.  
 - Use gradle tools such as Gradle's tab in IntelliJ or its CLI tool ensure nothing is broken during a complete build process before committing.
 - When pushing to master make sure to incrememnt the project version in build.gradle
 
-# Project Structure
+## Project Structure
 ---
 ### Build.Gradle
 **Plugins**: Container of plugins used by the project.  There are three types of plugins.  **Core**, **Gradle**, and **Other**.  Core plugins are bundled with Gradle.  Gradle plugins are plugins hosted by Gradle [here](https://plugins.gradle.org/).  These can be called using the same convention as core plugins but require you to deal with versioning.  Other plugins aren't hosted by Gradle and require their own setups.  They make the build.gradle file messier but if they're needed then so be it.
