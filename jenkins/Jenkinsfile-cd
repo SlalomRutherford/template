@@ -1,0 +1,139 @@
+def blue = "#42b3f4"
+def good = "#3dd62f"
+def danger = "#f45641"
+def warning = "#ffd344"
+
+config = null
+jenkinsUtils = null
+
+void importFunctions() {
+    config = readProperties(file: 'jenkins/config.env')
+    jenkinsUtils = load "jenkins/JenkinsUtils.groovy"
+}
+
+services {
+    agent none
+
+    stages {
+        stage('Deploying to Dev.') {
+            agent {
+                node {
+                    label 'ubuntu'
+                }
+            }
+            steps {
+                println "Deploying to Dev."
+                println "BUILD_VERSION: ${params.BUILD_VERSION}"
+                importFunctions()
+                withCredentials([[$class: "AmazonWebServicesCredentialsBinding", credentialsId: "dev-aws-deployer"]]) {
+                    script {
+                        jenkinsUtils.sendSlackMessage("Attempting Deployment to Dev with version ${params.BUILD_VERSION}.", "<${env.BUILD_URL}|Click here to review the build>", blue)
+                        sh(script: './gradlew build')
+                        jenkinsUtils.deployResourceStack('dev')
+                        jenkinsUtils.ecsDeploy('dev', params.BUILD_VERSION)
+                        jenkinsUtils.deployConsumerStack('dev', params.BUILD_VERSION)
+                        jenkinsUtils.deployCronStack('dev', params.BUILD_VERSION)
+                    }
+                }
+            }
+            post {
+                success {
+                    println 'success! Deployed to dev.'
+                    script {
+                        jenkinsUtils.sendSlackMessage("Success: Dev. Deployment with version ${params.BUILD_VERSION}", "<${env.BUILD_URL}|Click here to review the build>", good)
+                    }
+                }
+                failure {
+                    println "failed to deploy to dev."
+                    script {
+                        jenkinsUtils.sendSlackMessage("Failed: Dev. Deployment", "<${env.BUILD_URL}|Click here to review the build>", danger)
+                    }
+                }
+                aborted {
+                    println "job aborted. Did not deploy to dev."
+                    script {
+                        jenkinsUtils.sendSlackMessage("Aborted: Dev. Deployment", "<${env.BUILD_URL}|Click here to review the build>", warning)
+                    }
+                }
+            }
+        }
+        stage('Deploying to Sandbox') {
+            agent {
+                node {
+                    label 'ubuntu'
+                }
+            }
+            steps {
+                println "Deploying to Sandbox"
+                println "BUILD_VERSION: ${params.BUILD_VERSION}"
+                importFunctions()
+                withCredentials([[$class: "AmazonWebServicesCredentialsBinding", credentialsId: "sandbox-aws-deployer"]]) {
+                    script {
+                        jenkinsUtils.sendSlackMessage("Attempting Deployment to Sandbox with version ${params.BUILD_VERSION}.", "<${env.BUILD_URL}|Click here to review the build>", blue)
+                        sh(script: './gradlew build')
+                        jenkinsUtils.deployResourceStack('sandbox')
+                        jenkinsUtils.ecsDeploy('sandbox', params.BUILD_VERSION)
+                        jenkinsUtils.deployConsumerStack('sandbox', params.BUILD_VERSION, 'sandbox-lambda-functions-archive')
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Production?') {
+            agent none
+            steps {
+                input(message: "Do you want to deploy version ${params.BUILD_VERSION} to Production?", submitter: 'CN=THINGS,OU=Distribution,OU=Groups,OU=The Loyalty Group Object,DC=LOYCORP,DC=local')
+            }
+            post {
+                success {
+                    echo 'Attempting to deploy to production'
+                }
+                aborted {
+                    echo "Aborting attempt to deploy to production"
+                }
+            }
+        }
+
+        stage('Deploying to Production') {
+            agent {
+                node {
+                    label 'ubuntu'
+                }
+            }
+            steps {
+                println "Deploying to Production"
+                println "BUILD_VERSION: ${params.BUILD_VERSION}"
+                importFunctions()
+                withCredentials([[$class: "AmazonWebServicesCredentialsBinding", credentialsId: "prod-aws-deployer"]]) {
+                    script {
+                        jenkinsUtils.sendSlackMessage("Attempting Deployment to prod with version ${params.BUILD_VERSION}.", "<${env.BUILD_URL}|Click here to review the build>", blue)
+                        sh(script: './gradlew build')
+                        jenkinsUtils.deployResourceStack('prod')
+                        jenkinsUtils.ecsDeploy('prod', params.BUILD_VERSION)
+                        jenkinsUtils.deployConsumerStack('prod', params.BUILD_VERSION, 'prod-lambda-functions-archive')
+                    }
+                }
+            }
+            post {
+                success {
+                    script {
+                        echo 'success! Deployed to production'
+                        jenkinsUtils.sendSlackMessage("Success: Production Deployment", "<${env.BUILD_URL}|Click here to review the build>", good)
+                    }
+                }
+                failure {
+                    script {
+                        echo "failed to deploy to production"
+                        jenkinsUtils.sendSlackMessage("Failed: Production Deployment", "<${env.BUILD_URL}|Click here to review the build>", danger)
+                    }
+                }
+                aborted {
+                    script {
+                        echo "job aborted. Did not deploy to production"
+                        jenkinsUtils.sendSlackMessage("Aborted: Production Deployment", "<${env.BUILD_URL}|Click here to review the build>", warning)
+                    }
+                }
+            }
+        }
+    }
+}

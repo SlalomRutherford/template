@@ -1,4 +1,4 @@
-package testComponent;
+package components;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
