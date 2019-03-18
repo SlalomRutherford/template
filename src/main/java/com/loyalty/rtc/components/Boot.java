@@ -1,4 +1,4 @@
-package components;
+package com.loyalty.rtc.components;
 
 import org.slf4j.*;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

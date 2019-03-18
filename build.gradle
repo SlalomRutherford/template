@@ -95,6 +95,11 @@ pmd { //TODO:  Determine which rules to use
     ]
 }
 
-task test123 {
-    println 'success'
+artifactory { //TODO: Test
+    contextUrl = 'https://loyalty.jfrog.io/loyalty'
+    publish {
+        defaults {
+            publications ('mavenJava')
+        }
+    }
 }
