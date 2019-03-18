@@ -39,6 +39,8 @@ dependencies {
 
     //splunk
     implementation 'com.splunk:splunk:1.6.5.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
 
     //rest
     testImplementation 'io.rest-assured:rest-assured:3.3.0'
