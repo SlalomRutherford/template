@@ -5,8 +5,7 @@ When creating a new service or repo, use this template as a jumping off point.  
 
 # Setup
 - Clone the repo.
-- Open it up in IntelliJ.
-- Smash that next button.
+- Open it up in IntelliJ without any edits to project settings.
 - Test out gradle tasks such as clean, build, test, or bootRun.
 
 # Best Practices
@@ -14,7 +13,7 @@ When creating a new service or repo, use this template as a jumping off point.  
 - Maintain a clean and organized build.gradle file.
 - Create and share useful run configs specific to your project.
 - Use gradle tools such as Gradle's tab in IntelliJ or its CLI tool ensure nothing is broken during a complete build process before committing.
-- When pushing to master make sure to incrememnt the project version in build.gradle
+- When pushing to master make sure to incrememnt the project version in gradle.properties
 
 # Project Structure
 ---
@@ -44,6 +43,18 @@ IntelliJ setup folder.  Nothing should be committed to this folder besides runCo
 The src code.  Follows standard Java conventions with mirrored main and test folders.
 
 ---
+### env Folder
+Configuration files for connecting to aws services and databases.
+
+---
+### JenkinsFile
+Configuration file for pushing artifacts to Jenkins.
+
+---
+### settings.xml File
+Configuration file for connecting to Artifactory.  
+
+---
 ### Everything else
 Don't worry about it.  No touch.
 
@@ -55,6 +66,8 @@ Java (Junit): https://docs.gradle.org/current/userguide/java_plugin.html
 Pmd: https://docs.gradle.org/current/userguide/pmd_plugin.html
 
 Idea: https://docs.gradle.org/current/userguide/idea_plugin.html
+
+Maven-Publish: https://docs.gradle.org/current/userguide/publishing_maven.html
 
 ### Non Core:
 Spring Boot: https://spring.io/guides
@@ -68,5 +81,8 @@ Splunk: https://docs.splunk.com/Documentation
 
 REST Assured: https://github.com/rest-assured/rest-assured/wiki
 
+### Logging
+TBW
 
-
+### Releasing
+TBW
