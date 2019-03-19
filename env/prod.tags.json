@@ -1,0 +1,7 @@
+{
+  "Team": "RealTime",
+  "Project": "RICE",
+  "Environment": "prod",
+  "Component": "rice",
+  "Scheduler": "default"
+}

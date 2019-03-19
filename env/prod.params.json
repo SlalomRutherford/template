@@ -1,0 +1,13 @@
+{
+  "ClusterStackName": "prod-private-mem-ecs",
+  "Path": "rice",
+  "AppName": "rice",
+  "Priority": "601",
+  "AppDesiredCount": "2",
+  "AppMaxCount": "4",
+  "AppMinCount": "2",
+  "Memory": "2048",
+  "Cpu": "1024",
+  "KinesisStackName": "prod-splunk",
+  "KmsKey": "arn:aws:kms:us-east-1:824691084780:key/0cc4a68d-2fe1-4c39-9e09-b3c812ec3b6b"
+}

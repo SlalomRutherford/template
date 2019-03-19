@@ -2,16 +2,15 @@ plugins {
     id 'java'
     id 'pmd'
     id 'idea'
+    id 'maven-publish'
 
     id 'org.springframework.boot' version '2.1.3.RELEASE'
     id 'io.spring.dependency-management' version '1.0.7.RELEASE'
     id 'com.jfrog.artifactory' version '4.9.3'
-    id 'net.researchgate.release' version '2.6.0' //TODO:  No release tasks setup yet.
 }
 
 group "${group}"
 version "${version}"
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -20,7 +19,7 @@ repositories {
     maven {
         url "https://loyalty.jfrog.io/loyalty/libs-release"
         credentials {
-            username = 'things'
+            username = 'things' //TODO: replace with other credentials?
             password = 'AP2QQPyfCHZWKhshVbB2v4S79T1TNtoTPu3DW5ChcMCvjRVNX'
         }
     }
@@ -51,9 +50,7 @@ dependencies {
         'software.amazon.awssdk:s3',
 
         //splunk
-        'com.splunk:splunk:1.6.5.0',
-        'com.google.code.gson:gson:2.8.5', //TODO:  These are optional libraries for reading data.  Decied whether to keep.
-        'com.opencsv:opencsv:4.5', //TODO:  These are optional libraries for reading data.  Decied whether to keep.
+        'com.splunk.logging:splunk-library-javalogging:1.6.2',
 
         //spring boot
         'org.springframework.boot:spring-boot-starter'
@@ -95,11 +92,11 @@ pmd { //TODO:  Determine which rules to use
     ]
 }
 
-artifactory { //TODO: Test
-    contextUrl = 'https://loyalty.jfrog.io/loyalty'
-    publish {
-        defaults {
-            publications ('mavenJava')
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
         }
     }
 }
+build.finalizedBy(publish)

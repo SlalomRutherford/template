@@ -1,0 +1,13 @@
+{
+  "ClusterStackName": "sandbox-private-mem-ecs",
+  "Path": "rice",
+  "AppName": "rice",
+  "Priority": "601",
+  "AppDesiredCount": "1",
+  "AppMaxCount": "3",
+  "AppMinCount": "1",
+  "Memory": "2048",
+  "Cpu": "1024",
+  "KinesisStackName": "sandbox-splunk",
+  "KmsKey": "arn:aws:kms:us-east-1:824691084780:key/255606d9-1e6b-491f-b1f9-4e0a9c2eb891"
+}
