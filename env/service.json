@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Creates an ECS service and other dependent entities for RICE",
+    "Description": "Creates an ECS service and other dependent entities for **CONFIGURE**",
     "Parameters": {
         "ClusterStackName": {
             "Description": "Name of an active CloudFormation stack that contains an ECS cluster",
@@ -20,7 +20,7 @@
         "AppName": {
             "Type": "String",
             "Description": "Name of app. Should be the same as docker repository name.",
-            "Default": "rice"
+            "Default": "**CONFIGURE**"
         },
         "AppVersion": {
             "Type": "String",
@@ -34,7 +34,7 @@
         "ImageRepository": {
             "Type": "String",
             "Description": "The URI of the image repository where the app is published. Do not include app name in URI.",
-            "Default": "824691084780.dkr.ecr.us-east-1.amazonaws.com"
+            "Default": "**CONFIGURE**"
         },
         "KinesisStackName": {
             "Type": "String",

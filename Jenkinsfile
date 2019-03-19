@@ -1,4 +1,3 @@
-//TODO:  Change settings where relevant.
 // Jenkins deployment pipeline
 pipeline {
     agent none
@@ -12,7 +11,7 @@ pipeline {
                 }
             }
             steps {
-                checkout(scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'git@github.com:LoyaltyOne/rtc-rice.git', credentialsId: 'jenkins-ssh-key']], branches: [[name: "refs/tags/${params.buildVersion}"]]], poll: false)
+                checkout(scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'git@github.com:LoyaltyOne/**CONFIGURE**.git', credentialsId: 'jenkins-ssh-key']], branches: [[name: "refs/tags/${params.buildVersion}"]]], poll: false)
 
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'dev-aws-deployer']]) {
                     sh '''

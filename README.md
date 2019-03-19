@@ -45,14 +45,17 @@ The src code.  Follows standard Java conventions with mirrored main and test fol
 ---
 ### env Folder
 Configuration files for connecting to aws services and databases.
+Replace the **CONFIGURE** fields with data relevant to your specific project
 
 ---
 ### JenkinsFile
 Configuration file for pushing artifacts to Jenkins.
+Replace the **CONFIGURE** fields with data relevant to your specific project
 
 ---
 ### settings.xml File
-Configuration file for connecting to Artifactory.  
+Configuration file for connecting to Artifactory.
+Replace the **CONFIGURE** fields with data relevant to your specific project
 
 ---
 ### Everything else
@@ -81,8 +84,5 @@ Splunk: https://docs.splunk.com/Documentation
 
 REST Assured: https://github.com/rest-assured/rest-assured/wiki
 
-### Logging
-TBW
-
-### Releasing
-TBW
+### Project Pipeline
+TODO:  Add sections for making changes, writing tests, logging, building, and releasing

@@ -5,13 +5,13 @@
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
   <servers>
     <server>
-      <username>travis</username>
-      <password>AP39AmWxccbqrCzW118Abj2qwY6</password>
+      <username>**CONFIGURE**</username>
+      <password>**CONFIGURE**</password>
       <id>central</id>
     </server>
     <server>
-      <username>travis</username>
-      <password>AP39AmWxccbqrCzW118Abj2qwY6</password>
+      <username>**CONFIGURE**</username>
+      <password>**CONFIGURE**</password>
       <id>snapshots</id>
     </server>
   </servers>
