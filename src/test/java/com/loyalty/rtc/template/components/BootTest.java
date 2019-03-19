@@ -1,4 +1,4 @@
-package com.loyalty.rtc.components;
+package com.loyalty.rtc.template.components;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-# Loyalty One Template
+# Loyalty One RTC Template
 
 # Purpose
 When creating a new service or repo, use this template as a jumping off point.  It is meant to serve as a guide for making projects as simple as possible to setup for new developers.  Users should ideally be able to download the project code and run it without needing to worry about dependencies, versioning, or environment setup.
